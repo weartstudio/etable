@@ -11,7 +11,7 @@ export default function NewBook() {
 
   const createBook = async (values) => {
     try {
-        const res = await fetch(`${process.env.SITE_URI}/api/books`, {
+        const res = await fetch(`${process.env.MY_SITE_URI}/api/books`, {
             method: 'POST',
             headers: {
                 "Accept": "application/json",
