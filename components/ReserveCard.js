@@ -10,7 +10,7 @@ export default function FoglalasCard( { book } ) {
 
 	const deleteThis = async (id) => {
     try {
-        const deleted = await fetch(`http://localhost:3000/api/books/${id}`, {
+        const deleted = await fetch(`${process.env.SITE_URI}/api/books/${id}`, {
             method: "Delete"
         });
         router.push("/");

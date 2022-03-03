@@ -24,7 +24,7 @@ const Index = ({ books }) => {
 }
 
 Index.getInitialProps = async () => {
-  const res = await fetch('http://localhost:3000/api/books');
+  const res = await fetch(`${process.env.SITE_URI}/api/books`);
   const { data } = await res.json();
 
   return { books: data }
