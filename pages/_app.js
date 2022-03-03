@@ -1,15 +1,21 @@
 import '../style/main.scss'
 import Menu from '../components/Menu'
-import { Container } from 'react-bootstrap'
+import Head from 'next/head'
  
 function MyApp({ Component, pageProps }) {
   return (
-    <div className='min-vh-100 bg-light'>
-      <Menu />
-      <Container>
-        <Component {...pageProps} />
-      </Container>
-    </div>
+    <>
+      <Head>
+        <title>eTable</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <div className='min-vh-100 bg-light'>
+        <Menu />
+        <div className='container'>
+          <Component {...pageProps} />
+        </div>
+      </div>
+    </>
   )
 }
 
