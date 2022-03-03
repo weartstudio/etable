@@ -21,15 +21,13 @@ const Index = ({ books }) => {
       </Row>
     </>
   )
-}
+} 
 
-Index.getInitialProps = async () => {
-  console.log( process.env.MY_SITE_URI )
-  const apiURL = process.env.MY_SITE_URI + '/api/books';
-  const res = await fetch(apiURL);
+export async function getServerSideProps() {
+  const res = await fetch(`${process.env.MY_SITE_URI}/api/books`);
   const { data } = await res.json();
 
-  return { books: data }
+  return { props: { books: data } }
 }
 
 export default Index
