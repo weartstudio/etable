@@ -23,7 +23,7 @@ const Index = ({ books }) => {
   )
 } 
 
-export async function Index.getInitialProps() {
+export async function getServerSideProps() {
   const res = await fetch(`${process.env.MY_SITE_URI}/api/books`);
   const { data } = await res.json();
 
