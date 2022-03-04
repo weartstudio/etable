@@ -10,7 +10,7 @@ export default function FoglalasCard( { book } ) {
 		<div className='col'>
 			<div className='card'>
 				<div className='card-header'>
-					<Link href={`/${book._id}`}>
+					<Link href={`/book/${book._id}`}>
 						<a className='stretched-link'>{book.name}</a>
 					</Link>
 					<Text text={book.time} tag="badge bg-primary" />

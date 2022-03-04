@@ -1,20 +1,15 @@
 
 import React from 'react'
 import ReserveCard from '../components/ReserveCard'
-import PageTitle from '../components/PageTitle'
 import fetch from 'isomorphic-unfetch';
 
 
 const Index = ({ books }) => {
   return(
     <>
-      <PageTitle title="Foglalások" />
       <div className='row row-cols-1 row-cols-md-2 g-4'>
         {books.map(book => {
-          return <ReserveCard 
-            key={book._id} 
-            book={book} 
-          />
+          return <ReserveCard key={book._id} book={book} />
         })}
       </div>
     </>
