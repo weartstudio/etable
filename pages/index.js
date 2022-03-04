@@ -9,8 +9,7 @@ const Index = ({ books }) => {
   return(
     <>
       <PageTitle title="Foglalások" />
-      <div className='row g-4'>
-        {/* {items} */}
+      <div className='row row-cols-1 row-cols-md-2 g-4'>
         {books.map(book => {
           return <ReserveCard 
             key={book._id} 

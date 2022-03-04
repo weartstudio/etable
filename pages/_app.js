@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <div className='min-vh-100 bg-light'>
         <Menu />
-        <div className='container'>
+        <div className='container py-5'>
           <Component {...pageProps} />
         </div>
       </div>

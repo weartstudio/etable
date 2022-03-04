@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link';
 import Text from '../components/low-level/Text';
 
 
@@ -7,9 +8,11 @@ export default function FoglalasCard( { book } ) {
 
 	return (
 		<div className='col'>
-			<div className='card shadow-sm bg-white'>
-				<div className='card-header d-flex align-items-center justify-content-between'>
-					<a href={`/${book._id}`}>{book.name}</a>
+			<div className='card'>
+				<div className='card-header'>
+					<Link href={`/${book._id}`}>
+						<a className='stretched-link'>{book.name}</a>
+					</Link>
 					<Text text={book.time} tag="badge bg-primary" />
 				</div>
 				<div className='card-body d-flex small text-muted'>

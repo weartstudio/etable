@@ -1,15 +1,19 @@
-import { Navbar, Button, Nav, Container } from 'react-bootstrap'
+import Link from 'next/link'
 
 export default function Menu() {
 	return(
-    <Navbar sticky="top" bg="light">
-      <Container fluid>
-        <Navbar.Brand href="/">eTable</Navbar.Brand>
-        <Button href="/uj-foglalas" variant="primary">
-          <i className="bi bi-plus-circle me-2"></i> 
-          Új foglalás
-        </Button>
-      </Container>
-    </Navbar>
+    <nav className='navbar navbar-dark bg-dark stick-top'>
+      <div className="container-fluid">
+        <Link href="/">
+          <a className="navbar-brand">eTable</a>
+        </Link>
+        <Link href="/uj-foglalas">
+          <a className='btn btn-primary'>
+            <i className="bi bi-plus-circle me-2"></i> 
+            Új foglalás
+          </a>
+        </Link>
+      </div>
+    </nav>
 	)
 }

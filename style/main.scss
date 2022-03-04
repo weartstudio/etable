@@ -1,2 +1,18 @@
 @import "~bootstrap/scss/bootstrap";
-@import "~bootstrap-icons/font/bootstrap-icons"
+@import "~bootstrap-icons/font/bootstrap-icons";
+
+.card{
+	@extend .shadow-sm;
+	background: $white;
+	position: relative;
+	.card-header{
+		background: $dark;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		a, &{ 
+			color: $white;
+			text-decoration: none;
+		}
+	}
+}
