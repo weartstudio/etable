@@ -6,24 +6,34 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 
 function NewReservation() {
 	const [token, setToken] = useState(getToken());
+	const [currDate,setCurrDate] = useState();
 	const navigate = useNavigate();
 
-	const handleSubmit = () => {
+	useEffect(()=>{
+		var date = new Date();
+		var formatedDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+		setCurrDate(formatedDate);
+	},[])
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
 		if(token){ 
-			fetch("https://api.etable.hu/reservations/" + token.restaurant_id, { 
-					method: 'post', 
+			fetch("https://api.etable.hu/reservation", { 
+					method: 'POST', 
 					headers: new Headers({
-						'Content-Type': 'application/json'
+						'Content-Type': 'application/json',
+						'token': token.token
 					}),
 					body: JSON.stringify({ 
-						// email: name, 
-						// password: pass
+						name: e.target.name.value,
+						persons: e.target.persons.value,
+						when_date: e.target.when_date.value,
+						email: e.target.email.value,
+						tel: e.target.tel.value,
+						restaurant_id: "0"
 					})
 				})
-				.then((res) => (res.ok ? res.json() : [] ))
-				.then((tartalom) => {
-					navigate("/reservations")
-				});
+				.then((res) => (res.ok ? navigate("/reservations") : [] ));
 		}else{
 			navigate("/login") 
 		}
@@ -33,19 +43,33 @@ function NewReservation() {
 	return (
 		<>
 			<Header />
-			<Container>
-				<Row className='justify-content-center'>
-					<Col md='8' lg='6'>
-						<Form className='vstack gap-4'>
-							<Form.Control type='text' placeholder='Név' />
-							<Form.Control type='number' placeholder='Személyek' />
-							<Form.Control type='date' placeholder='Mikor (dátum)' />
-							<Form.Control type='email' placeholder='Email' />
-							<Form.Control type='text' placeholder='Telefon' />
-							<Button type='submit' variant='primary'>Küldés</Button>
-						</Form>
-					</Col>
-				</Row>
+			<Container style={{maxWidth: 1024}}>
+				<Form onSubmit={handleSubmit}>
+					<Row className='justify-content-center mb-4'>
+						<Col lg="6">
+							<Form.Control name="name" type='text' placeholder='Név' />
+						</Col>
+						<Col>
+							<Form.Control name="persons" type='number' placeholder='Személyek' />
+						</Col>
+						<Col>
+							<Form.Control name="when_date" type='date' defaultValue={ Date.now() } />
+						</Col>
+					</Row>
+					<Row className='justify-content-center mb-4'>
+						<Col>
+							<Form.Control name="email" type='email' placeholder='Email' />
+						</Col>
+						<Col>
+							<Form.Control name="tel" type='text' placeholder='Telefon' />
+						</Col>
+					</Row>					
+					<Row className='justify-content-center'>
+						<Col className='col-auto'>
+							<Button className='px-5' type='submit' variant='primary'>Küldés</Button>
+						</Col>
+					</Row>
+				</Form>
 			</Container>
 		</>
 	)

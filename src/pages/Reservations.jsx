@@ -34,7 +34,7 @@ function Reservations() {
 		<>
 			<Header />
 			<Container>
-				<Row>
+				<Row className='g-4'>
 					{items.map( (data) => <ReservationItem item={data}  key={data.id} />)}
 				</Row>
 			</Container>

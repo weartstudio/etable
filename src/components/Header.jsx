@@ -10,7 +10,7 @@ function Header() {
 			<Container>
 				<Navbar.Brand href={'/'}><img src={logo} style={{maxHeight: 40}} /></Navbar.Brand>
 				<Nav className="ms-auto">
-					<Nav.Link className={({ isActive }) => (isActive ? "lactive-class" : "not-active-class")} href={'/reservations'}>Foglalások</Nav.Link>
+					<Nav.Link href={'/reservations'}>Foglalások</Nav.Link>
 					<Nav.Link href={'/new-reservation'}>Új foglalás</Nav.Link>
 					<Nav.Link href={'/login'} onClick={ () => removeToken() }>
 						<i className="bi bi-box-arrow-right"></i>
