@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Container, Nav, Navbar, Button } from 'react-bootstrap'
 import { removeToken } from '../services/token'
 import logo from '../assets/logo.png' 
 
@@ -25,9 +25,7 @@ function Header({logout}) {
 								</>
 								:
 								<>
-									<Nav.Link href={'#'}>Funkciók</Nav.Link>
-									<Nav.Link href={'#'}>Kapcsolat</Nav.Link>
-									<Nav.Link href={'#'}>Csomagok</Nav.Link>
+									<Nav.Link href={'/'}>Mi az etable?</Nav.Link>
 									<Nav.Link href={'/login'}>
 										<i className="bi bi-person"></i>
 										<span className='ms-2'>Belépés</span>

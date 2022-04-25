@@ -37,9 +37,7 @@ function Login() {
 		<>
 			<Header logout />
 			<Container className='my-5'>
-				<div className="text-center mb-4">
-					<img src={logoAlt} className="mx-auto" style={{maxHeight: 60}} alt='' />
-				</div> 
+				<h1 className="h4 text-center mb-4">Belépés éttermeknek</h1> 
 				<Form onSubmit={handleSubmit} className='mx-auto card card-body shadow gap-3' style={{maxWidth: 400}}>
 					{badPassWord ? <Alert dismissible variant='danger' onClose={() => setBadPassWord(false)}>Hibás email cím vagy jelszó!</Alert> : '' }
 					<input onChange={(e)=>setName(e.target.value)} value={name} className='form-control' placeholder='email cím' type="text"  />
