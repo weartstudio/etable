@@ -26,7 +26,7 @@ function Login() {
 			.then((tartalom) => {
 				if (tartalom){
 					setToken(tartalom)
-					navigate("/reservations")
+					navigate("/admin")
 				} else {
 					setBadPassWord(true) 
 				}

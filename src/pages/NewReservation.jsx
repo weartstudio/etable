@@ -33,7 +33,7 @@ function NewReservation() {
 						restaurant_id: "0"
 					})
 				})
-				.then((res) => (res.ok ? navigate("/reservations") : [] ));
+				.then((res) => (res.ok ? navigate("/admin") : [] ));
 		}else{
 			navigate("/login") 
 		}

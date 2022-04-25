@@ -12,8 +12,8 @@ function Header() {
 				<Navbar.Toggle aria-controls="etable-main-nav" />
 				<Navbar.Collapse id="etable-main-nav">
 					<Nav className="ms-auto">
-						<Nav.Link href={'/reservations'}>Foglalások</Nav.Link>
-						<Nav.Link href={'/new-reservation'}>Új foglalás</Nav.Link>
+						<Nav.Link href={'/admin'}>Foglalások</Nav.Link>
+						<Nav.Link href={'/new'}>Új foglalás</Nav.Link>
 						<Nav.Link href={'/login'} onClick={ () => removeToken() }>
 							<i className="bi bi-box-arrow-right"></i>
 							<span className='d-inline d-lg-none ms-2'>Kijelentkezés</span>

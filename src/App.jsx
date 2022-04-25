@@ -10,9 +10,9 @@ function App() {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<Navigate to="/reservations"  />} />
-				<Route path="/reservations" element={<Reservations  />} />
+				<Route path="/admin" element={<Reservations  />} />
 				<Route path="/login" element={<Login />} />
-				<Route path="/new-reservation" element={<NewReservation />} />
+				<Route path="/new" element={<NewReservation />} />
 			</Routes>
 		</BrowserRouter>
 	)
