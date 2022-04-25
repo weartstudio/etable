@@ -1,2 +1,27 @@
+$primary: #4668c6;
+$secondary: #1e2d47;
+$light: #f3f9fc;
+$dark: #0a0f18;
+
+$success: #198754;
+$info: #0dcaf0;
+$warning: #ffc107;
+$danger: #dc3545;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);
+
+$body-color: #525252;
+$headings-color: $secondary;
+
+
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap-icons/font/bootstrap-icons";
