@@ -10,11 +10,10 @@ function Login() {
 
 	const [name,setName] = useState("");
 	const [pass,setPass] = useState("");
-	const [badPW,setBadPW] = useState(false);
+	const [badPassWord,setBadPassWord] = useState(false);
 
 	function handleSubmit(e){
 		e.preventDefault();
-		setBadPW(false)
 
 		fetch("https://api.etable.hu/users/login", { 
 			method: 'POST', 
@@ -29,7 +28,7 @@ function Login() {
 					setToken(tartalom)
 					navigate("/reservations")
 				} else {
-					setBadPW(true) 
+					setBadPassWord(true) 
 				}
 			});
 	}
@@ -40,7 +39,7 @@ function Login() {
 				<img src={logoAlt} className="mx-auto" style={{maxHeight: 60}} alt='' />
 			</div> 
 			<form  onSubmit={handleSubmit} className='mx-auto card card-body shadow gap-3' style={{maxWidth: 500}}>
-				{badPW ? <Alert dismissible variant='danger' onClose={() => setBadPW(false)}>Hibás email cím vagy jelszó!</Alert> : '' }
+				{badPassWord ? <Alert dismissible variant='danger' onClose={() => setBadPassWord(false)}>Hibás email cím vagy jelszó!</Alert> : '' }
 				<input onChange={(e)=>setName(e.target.value)} value={name} className='form-control' placeholder='email cím' type="text"  />
 				<input onChange={(e)=>setPass(e.target.value)} value={pass} className='form-control' placeholder='jelszó' type="password"/>
 				<input className='btn btn-primary px-4 mx-auto' type="submit" value="Belépés" />
