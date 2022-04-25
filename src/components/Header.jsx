@@ -3,25 +3,42 @@ import { Container, Nav, Navbar } from 'react-bootstrap'
 import { removeToken } from '../services/token'
 import logo from '../assets/logo.png' 
 
-function Header() {
+function Header({logout}) {
 
 	return (
-		<Navbar bg="dark" variant='dark' className='mb-5'  expand="lg">
-			<Container>
-				<Navbar.Brand href={'/'}><img src={logo} style={{maxHeight: 40}} alt='' /></Navbar.Brand>
-				<Navbar.Toggle aria-controls="etable-main-nav" />
-				<Navbar.Collapse id="etable-main-nav">
-					<Nav className="ms-auto">
-						<Nav.Link href={'/admin'}>Foglalások</Nav.Link>
-						<Nav.Link href={'/new'}>Új foglalás</Nav.Link>
-						<Nav.Link href={'/login'} onClick={ () => removeToken() }>
-							<i className="bi bi-box-arrow-right"></i>
-							<span className='d-inline d-lg-none ms-2'>Kijelentkezés</span>
-						</Nav.Link>
-					</Nav>
-				</Navbar.Collapse>
-			</Container>
-		</Navbar>
+		<header className='mb-5'>
+			<Navbar  bg='dark' variant='dark' expand="lg">
+				<Container>
+					<Navbar.Brand href={'/'}><img src={logo} style={{maxHeight: 40}} alt='' /></Navbar.Brand>
+					<Navbar.Toggle aria-controls="etable-main-nav" />
+					<Navbar.Collapse id="etable-main-nav">
+						<Nav className="ms-auto">
+							{ !logout ? 
+								<>
+									<Nav.Link href={'/admin'}>Foglalások</Nav.Link>
+									<Nav.Link href={'/new'} className="me-auto">Új foglalás</Nav.Link>
+									<Nav.Link href={'#'}>Beállítások</Nav.Link>
+									<Nav.Link href={'/login'} onClick={ () => removeToken() }>
+										<i className="bi bi-box-arrow-right"></i>
+										<span className='d-inline d-lg-none ms-2'>Kijelentkezés</span>
+									</Nav.Link>
+								</>
+								:
+								<>
+									<Nav.Link href={'#'}>Funkciók</Nav.Link>
+									<Nav.Link href={'#'}>Kapcsolat</Nav.Link>
+									<Nav.Link href={'#'}>Csomagok</Nav.Link>
+									<Nav.Link href={'/login'}>
+										<i className="bi bi-person"></i>
+										<span className='ms-2'>Belépés</span>
+									</Nav.Link>
+								</>
+							}
+						</Nav>
+					</Navbar.Collapse>
+				</Container>
+			</Navbar>
+		</header>
 	)
 }
 
