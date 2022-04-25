@@ -38,7 +38,7 @@ function Login() {
 			<div className="text-center mb-4">
 				<img src={logoAlt} className="mx-auto" style={{maxHeight: 60}} alt='' />
 			</div> 
-			<form  onSubmit={handleSubmit} className='mx-auto card card-body shadow gap-3' style={{maxWidth: 500}}>
+			<form  onSubmit={handleSubmit} className='mx-auto card card-body shadow gap-3' style={{maxWidth: 400}}>
 				{badPassWord ? <Alert dismissible variant='danger' onClose={() => setBadPassWord(false)}>Hibás email cím vagy jelszó!</Alert> : '' }
 				<input onChange={(e)=>setName(e.target.value)} value={name} className='form-control' placeholder='email cím' type="text"  />
 				<input onChange={(e)=>setPass(e.target.value)} value={pass} className='form-control' placeholder='jelszó' type="password"/>
