@@ -51,7 +51,7 @@ function DetailsReservation() {
 				<Row className='justify-content-center'>
 					<Col>
 						<h1>{item.name}</h1>
-						<Button variant='danger' onClick={handleDelete}>törlés</Button>
+						<Button variant='danger' onClick={handleDelete}>Törlés</Button>
 					</Col>
 				</Row>
 			</Container>
