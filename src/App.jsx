@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import DetailsReservation from "./pages/DetailsReservation";
 import Home from "./pages/Home";
 import Login from './pages/Login'
-import NewReservation from "./pages/NewReservation";
+import ReservationAdd from "./pages/ReservationAdd";
+import ReservationSingle from "./pages/ReservationSingle";
 import Reservations from './pages/Reservations'
 
 function App() {
@@ -15,8 +15,8 @@ function App() {
 					<Route path="/" element={<Home />} />
 					<Route path="/admin" element={<Reservations  />} />
 					<Route path="/login" element={<Login />} />
-					<Route path="/new" element={<NewReservation />} />
-					<Route path="/reservation/:id" element={<DetailsReservation />} />
+					<Route path="/new" element={<ReservationAdd />} />
+					<Route path="/reservation/:id" element={<ReservationSingle />} />
 				</Routes>
 			</BrowserRouter>
 		</>

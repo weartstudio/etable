@@ -4,7 +4,7 @@ import { Container,Row,Col,Button } from 'react-bootstrap'
 import { getToken } from '../services/token'
 import Header from '../components/Header'
 
-function DetailsReservation() { 
+function ReservationSingle() { 
 	const [token, setToken] = useState(getToken());
 	const [item, setItem] = useState("");
 	const { id } = useParams();
@@ -59,4 +59,4 @@ function DetailsReservation() {
 	)
 }
 
-export default DetailsReservation
+export default ReservationSingle

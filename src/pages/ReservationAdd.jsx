@@ -4,7 +4,7 @@ import { getToken } from '../services/token'
 import Header from '../components/Header'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 
-function NewReservation() {
+function ReservationAdd() {
 	const [token, setToken] = useState(getToken());
 	const [currDate,setCurrDate] = useState();
 	const navigate = useNavigate();
@@ -75,4 +75,4 @@ function NewReservation() {
 	)
 }
 
-export default NewReservation
+export default ReservationAdd

@@ -7,7 +7,7 @@ function Header({logout}) {
 	const [token] = useState(getToken());
 
 	return (
-		<header className='mb-5'>
+		<header>
 			<Navbar  bg='dark' variant='dark' expand="lg">
 				<Container>
 					<Navbar.Brand href={!token ? '/' : '/admin'}><img src={logo} style={{maxHeight: 40}} alt='' /></Navbar.Brand>
@@ -17,7 +17,6 @@ function Header({logout}) {
 							{ !logout ? 
 								<>
 									<Nav.Link href='/admin'>Foglalások</Nav.Link>
-									<Nav.Link href='/new' className="me-auto">Új foglalás</Nav.Link>
 									<Nav.Link href='#'>Beállítások</Nav.Link>
 									<Nav.Link href='/login' onClick={ () => removeToken() }>
 										<i className="bi bi-box-arrow-right"></i>
