@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getToken } from '../services/token'
 import Header from "../components/Header"
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Col, Alert } from 'react-bootstrap';
 import Item from '../components/Reservations/Item';
 import Pager from '../components/Reservations/Pager';
 import { getCustomDate } from '../services/getCustomDate';
@@ -36,9 +36,18 @@ function Reservations() {
 		<>
 			<Header />
 			<Pager date={date} setDate={setDate} />
-			<Container>
+			<Container className='container-small'>
 				<Row className='g-4 justify-content-center'>
-					{items.map( (data) => <Item item={data}  key={data.id} />)}
+					{ items.length > 0 ?
+							items.map( (data) => <Item item={data}  key={data.id} />)
+						:
+							<div className='text-center text-muted col'>
+								<p>
+									Erre a napra nincs foglalás.
+								</p>
+								<p className='small'>{date}</p>
+							</div>
+					}
 				</Row>
 			</Container>
 		</>
