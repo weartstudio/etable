@@ -10,8 +10,8 @@ function Pager({date,setDate}) {
 
 	return (
 		<div className="bg-light mb-5">
-			<Container>
-				<Row className='py-3 align-items-center justify-content-between'>
+			<Container className='container-small'>
+				<Row className='py-3 align-items-center'>
 
 					<Col className='col-auto'>
 						<InputGroup>
@@ -21,7 +21,7 @@ function Pager({date,setDate}) {
 						</InputGroup>
 					</Col>
 
-					<Col className='col-auto'>
+					<Col className='col-auto ms-auto'>
 						<Button href='/new'>Új foglalás</Button>
 					</Col>
 

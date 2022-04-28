@@ -2,10 +2,10 @@ import React from 'react'
 import { Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-function ReservationItem({item}) {
+function Item({item}) {
 	return (
-		<Col lg="6">
-			<div className="card card-body shadow">
+		<Col lg="12" className='container-small'>
+			<div className="card card-body shadow-sm">
 				<h5 className="card-title">
 					<Link to={`/reservation/${item.id}`}>
 						{item.name}
@@ -21,4 +21,4 @@ function ReservationItem({item}) {
 	)
 }
 
-export default ReservationItem
+export default Item

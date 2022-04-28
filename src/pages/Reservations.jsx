@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { getToken } from '../services/token'
 import Header from "../components/Header"
 import { Container, Row } from 'react-bootstrap';
-import ReservationItem from '../components/Reservations/ReservationItem';
+import Item from '../components/Reservations/Item';
 import Pager from '../components/Reservations/Pager';
 import { getCustomDate } from '../services/getCustomDate';
 
@@ -37,8 +37,8 @@ function Reservations() {
 			<Header />
 			<Pager date={date} setDate={setDate} />
 			<Container>
-				<Row className='g-4'>
-					{items.map( (data) => <ReservationItem item={data}  key={data.id} />)}
+				<Row className='g-4 justify-content-center'>
+					{items.map( (data) => <Item item={data}  key={data.id} />)}
 				</Row>
 			</Container>
 		</>

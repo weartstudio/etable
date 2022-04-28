@@ -43,7 +43,7 @@ function ReservationAdd() {
 	return (
 		<>
 			<Header />
-			<Container style={{maxWidth: 1024}}>
+			<Container className='container-small my-5'>
 				<Form onSubmit={handleSubmit}>
 					<Row className='justify-content-center mb-4'>
 						<Col lg="6">
