@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, createContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Container, Row } from 'react-bootstrap'
 import { getToken } from '../services/token'
@@ -13,6 +13,7 @@ function Reservations() {
 	const [date, setDate] = useState( getCustomDate(0) );
 
 	const navigate = useNavigate();
+	const refetchAdmin = createContext(1);
 
 	useEffect(() => {
 		if(token){ 
@@ -36,18 +37,16 @@ function Reservations() {
 			<Header />
 			<Pager date={date} setDate={setDate} />
 			<Container className='container-small'>
-				<Row className='g-4 justify-content-center'>
-					{ items.length > 0 ?
-							items.map( (data) => <Item item={data}  key={data.id} />)
-						:
-							<div className='text-center text-muted col'>
-								<p>
-									Erre a napra nincs foglalás.
-								</p>
-								<p className='small'>{date}</p>
-							</div>
-					}
-				</Row>
+					<Row className='g-4 justify-content-center'>
+						{ items.length > 0 ?
+								items.map( (data) => <Item item={data} key={data.id} />)
+							:
+								<div className='text-center text-muted col'>
+									<p>Erre a napra nincs foglalás.</p>
+									<p className='small'>{date}</p>
+								</div>
+						}
+					</Row>
 			</Container>
 		</>
 	)

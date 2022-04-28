@@ -48,9 +48,9 @@ function New({show, setShow}) {
 				</Modal.Header>
 				<Modal.Body>
 					<Stack gap='3'>
-						<Form.Control name="name" type='text' placeholder='Név' />
-						<Form.Control name="persons" type='number' placeholder='Személyek' />
-						<Form.Control name="when_date" type='date' defaultValue={ new Date().toISOString().split('T')[0] } />
+						<Form.Control name="name" type='text' placeholder='Név*' required/>
+						<Form.Control name="persons" type='number' placeholder='Személyek*' required/>
+						<Form.Control name="when_date" type='date' defaultValue={ new Date().toISOString().split('T')[0] } required/>
 						<Form.Control name="email" type='email' placeholder='Email' />
 						<Form.Control name="tel" type='text' placeholder='Telefon' />
 					</Stack>					
