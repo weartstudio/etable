@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Container, Row } from 'react-bootstrap';
 import { getToken } from '../services/token'
+import { getCustomDate } from '../services/getCustomDate';
 import Header from "../components/Header"
-import { Container, Row, Col, Alert } from 'react-bootstrap';
 import Item from '../components/Reservations/Item';
 import Pager from '../components/Reservations/Pager';
-import { getCustomDate } from '../services/getCustomDate';
-
+import New from '../components/Reservations/New';
 
 function Reservations() {
 	const [items, setItems] = useState([]);

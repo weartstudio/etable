@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import { Container, Row, Col, InputGroup, Button, FormControl } from 'react-bootstrap'
 import { getCustomDate } from '../../services/getCustomDate';
+import New from './New';
 
 const today = new Date();
 
 function Pager({date,setDate}) {
 
-	useEffect(()=>setDate( getCustomDate(0) ),[])
+	const [showNew,setShowNew] = useState(false);
+	useEffect(()=>setDate( getCustomDate(0) ),[]);
 
 	return (
 		<div className="bg-light mb-5">
@@ -22,7 +24,8 @@ function Pager({date,setDate}) {
 					</Col>
 
 					<Col className='col-auto ms-auto'>
-						<Button href='/new'>Új foglalás</Button>
+						<Button onClick={()=>setShowNew(true)}>Új foglalás</Button>
+						{showNew ? <New showModal={true} setShow={setShowNew} /> : null}
 					</Col>
 
 				</Row>

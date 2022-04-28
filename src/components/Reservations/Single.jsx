@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { getToken } from '../../services/token'
+import { useNavigate } from 'react-router-dom'
 
-function Single({data, show, setShow}) {
+function Single({data, setShow}) {
 
 	const [token] = useState(getToken());
-
-	const handleClose = () => setShow(!show);
+	const navigate = useNavigate();
 
 	const handleDelete = (e) => {
 		e.preventDefault();
@@ -25,7 +25,7 @@ function Single({data, show, setShow}) {
 	};
 
 	return (
-		<Modal show={show} onHide={handleClose}>
+		<Modal show={true} onHide={()=>setShow(false)}>
 			<Modal.Header closeButton>
 				<Modal.Title>{data.name}</Modal.Title>
 			</Modal.Header>
