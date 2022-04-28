@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Col, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import Single from './Single'
 
 function Item({item}) {
@@ -13,13 +12,8 @@ function Item({item}) {
 						<Button variant='link' onClick={()=>setShowSingle(true)}>
 							{item.name}
 						</Button>
-						{showSingle ? <Single data={item} show={showSingle} setShow={setShowSingle} /> : null}
+						{showSingle ? <Single item={item} setShow={setShowSingle} /> : null}
 					</h5>
-					<div className="row">
-						<div className="col-auto">{item.persons}</div>
-						<div className="col-auto">{item.when_date}</div>
-						<div className="col-auto">{item.email}</div>
-					</div>
 				</div>
 			</Col>
 			
