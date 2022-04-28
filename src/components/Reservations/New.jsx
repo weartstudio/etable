@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { getToken } from '../../services/token'
 import { Modal, Row, Stack, Form, Button } from 'react-bootstrap'
 
-function New({ setShow}) {
+function New({show, setShow}) {
 
 	const [token] = useState(getToken());
 	const [currDate,setCurrDate] = useState();
@@ -30,10 +30,10 @@ function New({ setShow}) {
 						when_date: e.target.when_date.value,
 						email: e.target.email.value,
 						tel: e.target.tel.value,
-						restaurant_id: "0"
+						restaurant_id: token.restaurant_id
 					})
 				})
-				.then((res) => (res.ok ? navigate("/admin") : [] ));
+				.then((res) => (res.ok ? setShow(false) : [] ));
 		}else{
 			navigate("/login") 
 		}
@@ -41,7 +41,7 @@ function New({ setShow}) {
 
 
 	return (
-		<Modal show={true} onHide={()=>setShow(false)}>
+		<Modal show={show} onHide={()=>setShow(false)}>
 			<Form onSubmit={handleSubmit}>
 				<Modal.Header closeButton>
 					<Modal.Title>Új foglalás</Modal.Title>
@@ -50,7 +50,7 @@ function New({ setShow}) {
 					<Stack gap='3'>
 						<Form.Control name="name" type='text' placeholder='Név' />
 						<Form.Control name="persons" type='number' placeholder='Személyek' />
-						<Form.Control name="when_date" type='date' defaultValue={ Date.now() } />
+						<Form.Control name="when_date" type='date' defaultValue={ new Date().toISOString().split('T')[0] } />
 						<Form.Control name="email" type='email' placeholder='Email' />
 						<Form.Control name="tel" type='text' placeholder='Telefon' />
 					</Stack>					

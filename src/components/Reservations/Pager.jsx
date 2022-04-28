@@ -25,7 +25,7 @@ function Pager({date,setDate}) {
 
 					<Col className='col-auto ms-auto'>
 						<Button onClick={()=>setShowNew(true)}>Új foglalás</Button>
-						{showNew ? <New showModal={true} setShow={setShowNew} /> : null}
+						{showNew ? <New showModal={true} show={showNew} setShow={setShowNew} /> : null}
 					</Col>
 
 				</Row>

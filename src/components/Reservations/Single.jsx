@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap'
 import { getToken } from '../../services/token'
 import { useNavigate } from 'react-router-dom'
 
-function Single({data, setShow}) {
+function Single({item, show, setShow}) {
 
 	const [token] = useState(getToken());
 	const navigate = useNavigate();
@@ -18,18 +18,23 @@ function Single({data, setShow}) {
 						'token': token.token
 					})
 				})
-				.then((res) => (res.ok ? navigate("/admin") : [] ));
+				.then((res) => (res.ok ? setShow(false) : [] ));
 		}else{
 			navigate("/login") 
 		}
 	};
 
 	return (
-		<Modal show={true} onHide={()=>setShow(false)}>
+		<Modal show={show} onHide={()=>setShow(false)}>
 			<Modal.Header closeButton>
-				<Modal.Title>{data.name}</Modal.Title>
+				<Modal.Title>{item.name}</Modal.Title>
 			</Modal.Header>
-			<Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+			<Modal.Body>
+				<p>{item.person}</p>
+				<p>{item.when_date}</p>
+				<p>{item.tel}</p>				
+				<p>{item.email}</p>				
+			</Modal.Body>
 			<Modal.Footer>
 				<Button variant='danger' onClick={handleDelete}>törlés</Button>
 			</Modal.Footer>
