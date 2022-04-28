@@ -12,7 +12,7 @@ function Item({item}) {
 						<Button variant='link' onClick={()=>setShowSingle(true)}>
 							{item.name}
 						</Button>
-						{showSingle ? <Single item={item} setShow={setShowSingle} /> : null}
+						{showSingle ? <Single item={item} show={showSingle} setShow={setShowSingle} /> : null}
 					</h5>
 				</div>
 			</Col>
