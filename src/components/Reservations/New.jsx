@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getToken } from '../../services/token'
 import { Modal, Row, Stack, Form, Button } from 'react-bootstrap'
+import RefetchAdmin from '../../services/RefetchAdmin'
 
 function New({show, setShow}) {
 
 	const [token] = useState(getToken());
 	const [currDate,setCurrDate] = useState();
 	const navigate = useNavigate();
+	const refetch = useContext(RefetchAdmin);
 
 	useEffect(()=>{
 		var date = new Date();
@@ -33,7 +35,12 @@ function New({show, setShow}) {
 						restaurant_id: token.restaurant_id
 					})
 				})
-				.then((res) => (res.ok ? setShow(false) : [] ));
+				.then((res) => {
+					if(res.ok){
+						setShow(false); 
+						refetch(); 
+				 }}
+				);
 		}else{
 			navigate("/login") 
 		}

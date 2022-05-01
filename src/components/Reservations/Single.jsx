@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { getToken } from '../../services/token'
 import { useNavigate } from 'react-router-dom'
+import RefetchAdmin from '../../services/RefetchAdmin'
 
 function Single({item, show, setShow}) {
 
 	const [token] = useState(getToken());
 	const navigate = useNavigate();
+	const refetch = useContext(RefetchAdmin);
 
 	const handleDelete = (e) => {
 		e.preventDefault();
@@ -18,7 +20,12 @@ function Single({item, show, setShow}) {
 						'token': token.token
 					})
 				})
-				.then((res) => (res.ok ? setShow(false) : [] ));
+				.then((res) => { 
+					if(res.ok){
+						setShow(false); 
+						refetch(); 
+					} 
+				 });
 		}else{
 			navigate("/login") 
 		}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Container, Row } from 'react-bootstrap'
 import { getToken } from '../services/token'
@@ -6,6 +6,7 @@ import { getCustomDate } from '../services/getCustomDate'
 import Header from "../components/Header"
 import Item from '../components/Reservations/Item'
 import Pager from '../components/Reservations/Pager'
+import RefetchAdmin from '../services/RefetchAdmin'
 
 function Reservations() {
 	const [items, setItems] = useState([]);
@@ -13,9 +14,8 @@ function Reservations() {
 	const [date, setDate] = useState( getCustomDate(0) );
 
 	const navigate = useNavigate();
-	const refetchAdmin = createContext(1);
 
-	useEffect(() => {
+	const fetchReservations = () => {
 		if(token){ 
 			fetch(`https://api.etable.hu/reservations/${token.restaurant_id}/${date}`, { 
 					method: 'get', 
@@ -30,24 +30,28 @@ function Reservations() {
 		}else{
 			navigate("/login") 
 		}
-	}, [date]);
+	}
+
+	useEffect(() => fetchReservations(), [date]);
 	
 	return (
 		<>
-			<Header />
-			<Pager date={date} setDate={setDate} />
-			<Container className='container-small'>
-					<Row className='g-4 justify-content-center'>
-						{ items.length > 0 ?
-								items.map( (data) => <Item item={data} key={data.id} />)
-							:
-								<div className='text-center text-muted col'>
-									<p>Erre a napra nincs foglalás.</p>
-									<p className='small'>{date}</p>
-								</div>
-						}
-					</Row>
-			</Container>
+			<RefetchAdmin.Provider value={fetchReservations}>
+				<Header />
+				<Pager date={date} setDate={setDate} />
+				<Container className='container-small'>
+						<Row className='g-4 justify-content-center'>
+							{ items.length > 0 ?
+									items.map( (data) => <Item item={data} key={data.id} />)
+								:
+									<div className='text-center text-muted col'>
+										<p>Erre a napra nincs foglalás.</p>
+										<p className='small'>{date}</p>
+									</div>
+							}
+						</Row>
+				</Container>
+			</RefetchAdmin.Provider>
 		</>
 	)
 }
