@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Container, Row } from 'react-bootstrap'
+import { Container, Row, Spinner } from 'react-bootstrap'
 import { getToken } from '../services/token'
 import { getCustomDate } from '../services/getCustomDate'
 import Header from "../components/Header"
@@ -10,6 +10,7 @@ import RefetchAdmin from '../services/RefetchAdmin'
 
 function Reservations() {
 	const [items, setItems] = useState([]);
+	const [loading, setLoading] = useState(true);
 	const [token] = useState(getToken());
 	const [date, setDate] = useState( getCustomDate(0) );
 
@@ -17,6 +18,7 @@ function Reservations() {
 
 	const fetchReservations = () => {
 		if(token){ 
+			setLoading(true);
 			fetch(`https://api.etable.hu/reservations/${token.restaurant_id}/${date}`, { 
 					method: 'get', 
 					headers: new Headers({
@@ -25,7 +27,8 @@ function Reservations() {
 				})
 				.then((res) => (res.ok ? res.json() : [] ))
 				.then((tartalom) => {
-					setItems(tartalom)
+					setItems(tartalom);
+					setLoading(false);
 				});
 		}else{
 			navigate("/login") 
@@ -33,7 +36,8 @@ function Reservations() {
 	}
 
 	useEffect(() => fetchReservations(), [date]);
-	
+
+
 	return (
 		<>
 			<RefetchAdmin.Provider value={fetchReservations}>
@@ -41,13 +45,15 @@ function Reservations() {
 				<Pager date={date} setDate={setDate} />
 				<Container className='container-small'>
 						<Row className='g-4 justify-content-center'>
-							{ items.length > 0 ?
-									items.map( (data) => <Item item={data} key={data.id} />)
+							{ loading ?
+								<Spinner animation="border" />
 								:
-									<div className='text-center text-muted col'>
-										<p>Erre a napra nincs foglalás.</p>
-										<p className='small'>{date}</p>
-									</div>
+								items.length > 0 ?
+									items.map( (data) => <Item item={data} key={data.id} />)
+									:
+									<p className='text-center text-muted col'>
+										Erre a napra nincs foglalás az adatbázisban.
+									</p>
 							}
 						</Row>
 				</Container>

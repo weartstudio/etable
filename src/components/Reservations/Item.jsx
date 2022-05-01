@@ -13,7 +13,7 @@ function Item({item}) {
 						<span className='stretched-link' onClick={()=>setShowSingle(true)}>
 							{item.name}
 						</span>
-						{showSingle ? <Single item={item} show={showSingle} setShow={setShowSingle} /> : null}
+						{showSingle && <Single item={item} show={showSingle} setShow={setShowSingle} /> }
 					</Card.Body>
 				</Card>
 			</Col>
