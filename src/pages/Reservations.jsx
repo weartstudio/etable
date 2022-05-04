@@ -7,6 +7,7 @@ import Header from "../components/Header"
 import Item from '../components/Reservations/Item'
 import Pager from '../components/Reservations/Pager'
 import RefetchAdmin from '../services/RefetchAdmin'
+import useInterval from '../services/useInterval'
 
 function Reservations() {
 	const [items, setItems] = useState([]);
@@ -36,6 +37,7 @@ function Reservations() {
 	}
 
 	useEffect(() => fetchReservations(), [date]);
+	useInterval(() => fetchReservations(), 30000); // fél perc
 
 
 	return (
